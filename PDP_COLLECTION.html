@@ -1,1 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MiaoSense | 喵感 - 澳洲站产品系列 (Series 2026)</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <style>
+        :root {
+            --color-bg: #F7F3F0;
+            --color-text: #2C2C2B;
+            --color-accent: #BF6A49;
+            --color-secondary: #5D6D5F;
+            --color-white: #FFFFFF;
+        }
 
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none !important; }
+        body { 
+            background-color: var(--color-bg); 
+            color: var(--color-text); 
+            font-family: 'Montserrat', sans-serif; 
+            font-weight: 300;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 { font-family: 'Playfair Display', serif; font-weight: 400; font-style: italic; }
+
+        .cursor-paw {
+            width: 24px;
+            height: 24px;
+            background: url('https://img.icons8.com/ios-filled/50/BF6A49/cat-footprint.png') no-repeat center center;
+            background-size: contain;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+        }
+
+        nav {
+            padding: 1.5rem 6%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(247, 243, 240, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .logo { font-size: 1.4rem; letter-spacing: 3px; text-transform: uppercase; font-weight: 600; color: var(--color-text); cursor: pointer; text-decoration: none; }
+
+        .pdp-section {
+            padding-top: 120px;
+            min-height: 100vh;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            scroll-margin-top: 100px;
+        }
+
+        .container { max-width: 1250px; margin: 0 auto; padding: 4rem 6%; }
+
+        /* Immersive Hero */
+        .pdp-hero {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 7%;
+            align-items: center;
+            margin-bottom: 8rem;
+        }
+        .hero-img { 
+            width: 100%; 
+            height: 600px; 
+            background-size: cover; 
+            background-position: center;
+            border-radius: 4px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.06);
+        }
+        .hero-text h1 { font-size: 4rem; margin-bottom: 2rem; line-height: 1.1; color: var(--color-text); }
+        .tagline { font-size: 0.9rem; color: var(--color-accent); text-transform: uppercase; letter-spacing: 5px; display: block; margin-bottom: 1.5rem; font-weight: 600; }
+        .description { font-size: 1.1rem; color: #555; margin-bottom: 3.5rem; font-weight: 300; }
+
+        /* Tech Breakdown */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 4rem;
+            margin-bottom: 8rem;
+        }
+        .tech-item h3 { font-size: 1.5rem; margin-bottom: 1.5rem; color: var(--color-text); border-bottom: 2px solid var(--color-accent); display: inline-block; padding-bottom: 0.5rem; }
+        .tech-item p { font-size: 0.95rem; color: #666; font-weight: 300; }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1.4rem 4rem;
+            background: var(--color-text);
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.4s;
+            border-radius: 2px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+        }
+        .cta-btn:hover { background: var(--color-accent); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(191,106,73,0.2); }
+
+        footer {
+            padding: 10rem 10% 4rem;
+            background: #111;
+            color: #777;
+        }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 5rem; margin-bottom: 4rem; }
+        .footer-col h4 { color: #fff; margin-bottom: 2.5rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 3px; }
+        .footer-col ul { list-style: none; }
+        .footer-col li { margin-bottom: 1.2rem; }
+        .footer-col a { color: #666; text-decoration: none; transition: 0.3s; font-size: 0.9rem; }
+        .footer-col a:hover { color: #fff; }
+        .legal-notice { border-top: 1px solid rgba(255,255,255,0.05); padding-top: 4rem; font-size: 0.8rem; line-height: 2.2; color: #555; scroll-margin-top: 120px; }
+
+        @media (max-width: 1000px) {
+            .pdp-hero { grid-template-columns: 1fr; }
+            .hero-img { height: 400px; }
+            .tech-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="cursor-paw" id="paw"></div>
+
+    <nav>
+        <a href="index.html" class="logo">MiaoSense | 喵感</a>
+        <div style="font-size: 0.75rem; letter-spacing: 2px; font-weight: 600; text-transform: uppercase;">
+            <a href="#p1" style="margin-left: 1.5rem; text-decoration: none; color: var(--color-text);">#1 Aura</a>
+            <a href="#p2" style="margin-left: 1.5rem; text-decoration: none; color: var(--color-text);">#2 Zenith</a>
+            <a href="#p7" style="margin-left: 1.5rem; text-decoration: none; color: var(--color-text);">#7 Guardian</a>
+            <a href="#legal" style="margin-left: 1.5rem; text-decoration: none; color: var(--color-accent);">Compliance</a>
+        </div>
+    </nav>
+
+    <!-- Product 1: Aura Smart Fountain -->
+    <section class="pdp-section" id="p1">
+        <div class="container">
+            <div class="pdp-hero">
+                <div class="hero-img" style="background-image: url('https://sc02.alicdn.com/kf/A655150eb14fa45579f3337471e54316eI.png');" data-aos="fade-right"></div>
+                <div class="hero-text" data-aos="fade-up">
+                    <span class="tagline">AU Standard Hydration</span>
+                    <h1>Aura | 灵感全钢饮水机</h1>
+                    <p class="description">“为澳洲水源环境而生。” 3.2L 大容量 304 不锈钢材质，彻底告别猫咪黑下巴。针对澳洲自来水钙镁离子含量深度优化，静谧运行，让饮水成为空间的艺术。</p>
+                    <a href="https://shop.miaosense.shop/cart/54027071717678:1" class="cta-btn">Buy Now | $129 AUD</a>
+                </div>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item" data-aos="fade-up">
+                    <h3>SAA 认证澳标插头</h3>
+                    <p>石家庄金闪科技原厂供应，100% 符合澳洲电气安全标准，无需转换器，插电即用。</p>
+                </div>
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="100">
+                    <h3>28dB 极静音运行</h3>
+                    <p>悬浮式低压水泵设计，运行噪音低于图书馆背景声。在澳洲宁静的夜晚，它只负责制造清凉。</p>
+                </div>
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="200">
+                    <h3>3.2L 开放式不锈钢</h3>
+                    <p>医疗级 304 不锈钢盘面，不仅抗菌且易于清洗，宽阔的饮水区满足猫咪挑剔的胡须感官。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product 2: Zenith Smart Feeder -->
+    <section class="pdp-section" id="p2">
+        <div class="container">
+            <div class="pdp-hero">
+                <div class="hero-img" style="background-image: url('https://s.alicdn.com/@sc04/kf/H25348334170c4c028e019f46318fc033l.jpg');" data-aos="fade-right"></div>
+                <div class="hero-text" data-aos="fade-up">
+                    <span class="tagline">Smart Nutrition Lab</span>
+                    <h1>Zenith | 极简智能喂食器</h1>
+                    <p class="description">“跨越澳洲时区的爱。” 4L 储粮空间配合 1080P 超清广角监控，支持涂鸦 (Tuya) 全球服务器连接。即便您在墨尔本 CBD 办公，也能随时远程加餐。</p>
+                    <a href="https://shop.miaosense.shop/cart/54027073945902:1" class="cta-btn">Buy Now | $189 AUD</a>
+                </div>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item" data-aos="fade-up">
+                    <h3>1080P 广角摄像头</h3>
+                    <p>支持红外夜视与实时双向语音通话。杭州禾发新健康出品，确保画面流畅不卡顿。</p>
+                </div>
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="100">
+                    <h3>不锈钢碗/双供电</h3>
+                    <p>采用抗菌不锈钢食盘，内置电池槽设计。即便澳洲偏远地区偶发断电，依然能准时出粮。</p>
+                </div>
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="200">
+                    <h3>涂鸦智能生态</h3>
+                    <p>原生适配 Smart Life App，澳洲 AWS 节点优化，操作反馈近乎零延迟。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product 3: Eos Thermal Bowl -->
+    <section class="pdp-section" id="p3">
+        <div class="container">
+            <div class="pdp-hero">
+                <div class="hero-img" style="background-image: url('https://s.alicdn.com/@sc04/kf/Hca04668ee5234520b631362dcaf3aacan.jpg');" data-aos="fade-right"></div>
+                <div class="hero-text" data-aos="fade-up">
+                    <span class="tagline">Constant Warmth</span>
+                    <h1>Eos | 恒温陶瓷碗</h1>
+                    <p class="description">“对抗塔斯马尼亚的寒冬。” 350ml 精致容量，采用四川拓腾科技专利恒温技术，USB-C 安全供电，维持 38°C 恒久温度。</p>
+                    <a href="https://shop.miaosense.shop/cart/54027085381934:1" class="cta-btn">Buy Now | $59 AUD</a>
+                </div>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item" data-aos="fade-up">
+                    <h3>38°C 恒温呵护</h3>
+                    <p>特别为肠胃敏感的幼猫与老年猫设计。在澳洲冬季，确保每一口水都保持在最适宜的体感温度。</p>
+                </div>
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="100">
+                    <h3>USB-C 安全电压</h3>
+                    <p>5V/1A 低电压供电，兼容各种 AU 充电设备，无漏电风险，是真正的人宠和谐设计。</p>
+                </div>
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="200">
+                    <h3>易洁高岭土陶瓷</h3>
+                    <p>经过高温烧制，釉面不仅抗划伤且不易残留油脂，完美适配澳洲家庭洗碗机。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product 4: Nebula Smart Laser -->
+    <section class="pdp-section" id="p4">
+        <div class="container">
+            <div class="pdp-hero">
+                <div class="hero-img" style="background-image: url('https://s.alicdn.com/@sc04/kf/H1fef4475c1004a94b61499ea18dccb7eR.jpg');" data-aos="fade-right"></div>
+                <div class="hero-text" data-aos="fade-up">
+                    <span class="tagline">Interactive Vision</span>
+                    <h1>Nebula | 智能激光伴侣</h1>
+                    <p class="description">“不只是激光，更是全家监控。” 深圳芯品臻选出品，集成 1080P 高清录制与 AI 运动识别。在您离家时，它是猫咪的运动教练，也是您的安全哨兵。</p>
+                    <a href="https://shop.miaosense.shop/cart/54027085709614:1" class="cta-btn">Buy Now | $99 AUD</a>
+                </div>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item" data-aos="fade-up">
+                    <h3>1080P 高清摄像</h3>
+                    <p>支持 2.4G WiFi 连接。不只是投射激光，还能记录猫咪疯狂捕猎的精彩瞬间，并实时同步云端。</p>
+                </div>
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="100">
+                    <h3>AI 智能运动模式</h3>
+                    <p>不再是机械循环。Nebula 能够根据猫咪的追逐反馈，实时调整光点速度，让本能释放更彻底。</p>
+                </div>
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="200">
+                    <h3>护眼级激光标准</h3>
+                    <p>符合国际 Class 1 安全激光标准，经过数千次反射测试，确保对宠物与主人的视力无伤害。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product 5: Nova 360 Teaser -->
+    <section class="pdp-section" id="p5">
+        <div class="container">
+            <div class="pdp-hero">
+                <div class="hero-img" style="background-image: url('https://s.alicdn.com/@sc04/kf/Hab1e6be73fbb4690b7b58c398ccdfd3ef.jpg');" data-aos="fade-right"></div>
+                <div class="hero-text" data-aos="fade-up">
+                    <span class="tagline">Kinetic Play</span>
+                    <h1>Nova | 360 自动逗猫器</h1>
+                    <p class="description">“感应灵动的律动。” 深圳文创富 (GULAKI) 制造。USB 充电配合超静音马达，在猫咪靠近时自动开启，激发最原始的捕猎冲动。</p>
+                    <a href="https://shop.miaosense.shop/cart/54027085906222:1" class="cta-btn">Buy Now | $69 AUD</a>
+                </div>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item" data-aos="fade-up">
+                    <h3>智能人体/宠感应</h3>
+                    <p>先进的红外热感应技术，只有在检测到猫咪活动时才启动，节能高效且充满惊喜感。</p>
+                </div>
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="100">
+                    <h3>USB 便捷直充</h3>
+                    <p>内置 500mAh 电池。一次充满，可在澳洲家庭场景下提供长达 20 天的间歇性互动体验。</p>
+                </div>
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="200">
+                    <h3>超静音减震马达</h3>
+                    <p>运行分贝低于 35dB。专为对声音敏感的猫咪打造，只管奔跑，不留噪音。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product 6: SwiftMouse Smart Toy -->
+    <section class="pdp-section" id="p6">
+        <div class="container">
+            <div class="pdp-hero">
+                <div class="hero-img" style="background-image: url('https://s.alicdn.com/@sc04/kf/Hc4c2009ec9624c3ea64aa27812a5e0dcC.jpg');" data-aos="fade-right"></div>
+                <div class="hero-text" data-aos="fade-up">
+                    <span class="tagline">Escape Logic</span>
+                    <h1>SwiftMouse | 智能互动玩具</h1>
+                    <p class="description">“像猎物一样逃亡。” 湖南酷格宠物用品出品。触碰即唤醒，内置复杂的随机路径算法，模拟小老鼠的惊慌逃窜。</p>
+                    <a href="https://shop.miaosense.shop/cart/54027086135598:1" class="cta-btn">Buy Now | $49 AUD</a>
+                </div>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item" data-aos="fade-up">
+                    <h3>触碰唤醒逻辑</h3>
+                    <p>无需手动操作。猫咪轻轻一拨，SwiftMouse 立即进入全速奔跑模式，让捕猎欲望随时爆发。</p>
+                </div>
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="100">
+                    <h3>仿真不可预测路径</h3>
+                    <p>不会撞墙，不会死机。内置红外避障系统，在澳洲开阔的地毯上实现真正的自由奔跑。</p>
+                </div>
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="200">
+                    <h3>耐磨硅胶材质</h3>
+                    <p>外壳采用符合 RoHS 标准的高弹力硅胶，无毒无害，经得起澳洲成年猫的暴力抓挠。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product 7: Guardian 4G GPS -->
+    <section class="pdp-section" id="p7">
+        <div class="container">
+            <div class="pdp-hero">
+                <div class="hero-img" style="background-image: url('https://s.alicdn.com/@sc04/kf/H15682f6eb1344bd59adb02f18f077767L.jpg');" data-aos="fade-right"></div>
+                <div class="hero-text" data-aos="fade-up">
+                    <span class="tagline">AU Network Ready</span>
+                    <h1>Guardian | 全境守护 GPS</h1>
+                    <p class="description">“专为澳洲电信环境优化。” 深圳云里物里 (Uniwoay) 深度定制，原生支持 Band 28 (700MHz) 频段。无论您的猫在丛林还是街道，信号永不断线。</p>
+                    <a href="https://shop.miaosense.shop/cart/54027086168366:1" class="cta-btn">Buy Now | $149 AUD</a>
+                </div>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item" data-aos="fade-up">
+                    <h3>LTE Band 28 (700MHz)</h3>
+                    <p>针对 Telstra/Optus 频段深度优化。这是澳洲覆盖最广、穿透力最强的核心频段，确保全境无忧。</p>
+                </div>
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="100">
+                    <h3>IP67 军工级防水</h3>
+                    <p>无惧澳洲突发的骤雨与潮湿环境。即便在泥泞的草丛中穿行，G68P 芯片依然稳定回传地理位置。</p>
+                </div>
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="200">
+                    <h3>大洋洲专属固件</h3>
+                    <p>预装大洋洲版固件，搜索卫星速度提升 40%，定位精度误差控制在 5 米以内。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product 8: VitalCheck Monitor -->
+    <section class="pdp-section" id="p8">
+        <div class="container">
+            <div class="pdp-hero">
+                <div class="hero-img" style="background-image: url('https://s.alicdn.com/@sc04/kf/Hbb4af1c663c0424fa2e114c6dd9e173dx.jpg');" data-aos="fade-right"></div>
+                <div class="hero-text" data-aos="fade-up">
+                    <span class="tagline">Bio-Metric AI</span>
+                    <h1>VitalCheck | 健康监测器</h1>
+                    <p class="description">“8克重的守护。” 湖南广业生物出品。通过蓝牙 5.0 连接，24小时监测猫咪的运动轨迹与睡眠模式，生成详尽的 AI 健康周报。</p>
+                    <a href="https://shop.miaosense.shop/cart/54027086364974:1" class="cta-btn">Buy Now | $79 AUD</a>
+                </div>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item" data-aos="fade-up">
+                    <h3>8g 极致羽量化</h3>
+                    <p>采用超轻复合纤维，重量仅相当于两枚硬币。即便是对重量极度敏感的幼猫也毫无佩戴压力。</p>
+                </div>
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="100">
+                    <h3>蓝牙 5.0 低功耗</h3>
+                    <p>配合先进的电源管理算法。一次充电，即可提供长达 30 天的连续监测，告别频繁充电焦虑。</p>
+                </div>
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="200">
+                    <h3>运动/睡眠 AI 分析</h3>
+                    <p>通过六轴传感器捕捉细微动态，识别猫咪深睡、浅睡与活跃时段，帮助主人预判健康隐患。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product 9: AirTag Pro Smart Tag -->
+    <section class="pdp-section" id="p9">
+        <div class="container">
+            <div class="pdp-hero">
+                <div class="hero-img" style="background-image: url('https://s.alicdn.com/@sc04/kf/H96da0dc51ec0466f95e1a42b306b1e6dN.jpg');" data-aos="fade-right"></div>
+                <div class="hero-text" data-aos="fade-up">
+                    <span class="tagline">NFC Identity</span>
+                    <h1>AirTag Pro | 智能铭牌</h1>
+                    <p class="description">“身份的数字化之美。” 深圳嘉源诚科技出品。316L 精钢材质搭配高灵敏 NFC 芯片，这是猫咪在大洋洲生活的高级身份证。</p>
+                    <a href="https://shop.miaosense.shop/cart/54027086397742:1" class="cta-btn">Buy Now | $29 AUD</a>
+                </div>
+            </div>
+            <div class="tech-grid">
+                <div class="tech-item" data-aos="fade-up">
+                    <h3>316L 医疗级精钢</h3>
+                    <p>采用奢侈品级材质打磨，抗腐蚀、防过敏。即便猫咪在澳洲盐分较高的海滨玩耍，依然光亮如新。</p>
+                </div>
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="100">
+                    <h3>NFC 一键联系主人</h3>
+                    <p>路人无需下载 App，只需用手机靠近感应，即可瞬间获取您的联系方式与爱宠的诊疗记录。</p>
+                </div>
+                <div class="tech-item" data-aos="fade-up" data-aos-delay="200">
+                    <h3>硅胶缓冲防噪声</h3>
+                    <p>外圈包覆食品级硅胶，彻底消除金属与食盆碰撞的叮当声，保护猫咪敏感的听觉系统。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Legal -->
+    <footer id="legal">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4 style="font-family: 'Playfair Display', serif; font-size: 1.8rem; font-style: italic; color: #fff;">MiaoSense</h4>
+                <p>Architectural Tech for Feline Well-being.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="index.html">Main Story</a></li>
+                    <li><a href="index.html#philosophy">Brand Philosophy</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="#legal">Privacy Policy</a></li>
+                    <li><a href="#legal">Shipping Info</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Compliance</h4>
+                <ul>
+                    <li><a href="#legal">Refund Policy (ACL)</a></li>
+                    <li><a href="#legal">SAA Certification</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="legal-notice">
+            <p>**澳洲消费者法律声明 (ACL Compliance)**：我们的商品附带《澳洲消费者法》不能排除的保证。对于重大故障，您有权获得更换或退款，并针对任何其他合理可预见的损失或损坏获得补偿。如果商品质量不合格且故障不构成重大故障，您也有权要求修理或更换。MiaoSense 严格遵守澳洲《1988年隐私法》。所有带插头设备均符合 SAA/RCM 安全标准。</p>
+            <p style="margin-top: 2rem;">&copy; 2026 MiaoSense Australia. 版权所有。</p>
+        </div>
+    </footer>
+
+    <script>
+        AOS.init({ duration: 1200, once: true });
+        const paw = document.getElementById('paw');
+        document.addEventListener('mousemove', (e) => {
+            paw.style.left = e.clientX + 'px';
+            paw.style.top = e.clientY + 'px';
+        });
+    </script>
+</body>
+</html>
