@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="MiaoSense AU - Architectural Pet Tech for Feline Well-being. 为澳洲家庭打造的高端宠物智能美学产品。">
+    <link rel="icon" type="image/png" href="https://img.icons8.com/ios-filled/50/BF6A49/cat-footprint.png">
     <title>MiaoSense | 喵感 - 建筑学视角下的宠物智能美学</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -38,8 +40,9 @@
             pointer-events: none;
             z-index: 9999;
             transform: translate(-50%, -50%);
-            transition: transform 0.1s ease-out, opacity 0.3s ease;
+            transition: opacity 0.3s ease; /* 移除非位移过渡，提升流畅度 */
             opacity: 0.8;
+            will-change: left, top;
         }
 
         /* 极简导航 */
@@ -591,12 +594,26 @@
     <script>
         AOS.init({ duration: 1200, once: true });
 
-        // 精准猫爪光标逻辑
+        // 高流畅度猫爪光标
         const paw = document.getElementById('paw');
+        let mouseX = 0, mouseY = 0;
+        let currentX = 0, currentY = 0;
+
         document.addEventListener('mousemove', (e) => {
-            paw.style.left = e.clientX + 'px';
-            paw.style.top = e.clientY + 'px';
+            mouseX = e.clientX;
+            mouseY = e.clientY;
         });
+
+        function animateCursor() {
+            // 轻微延迟跟随，增加建筑感的“灵动”
+            currentX += (mouseX - currentX) * 0.15;
+            currentY += (mouseY - currentY) * 0.15;
+            paw.style.left = currentX + 'px';
+            paw.style.top = currentY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
         document.addEventListener('mousedown', () => paw.style.transform = 'translate(-50%, -50%) scale(0.8)');
         document.addEventListener('mouseup', () => paw.style.transform = 'translate(-50%, -50%) scale(1)');
 
@@ -615,7 +632,6 @@
             }
         }
 
-        // 初始化语言
         const savedLang = localStorage.getItem('miao-lang');
         if (savedLang) setLanguage(savedLang);
     </script>
