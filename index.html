@@ -424,9 +424,9 @@
                 <h3 class="lang-en">Zenith | Smart Feeder</h3>
                 <p class="lang-zh">建筑感的几何形态中，包裹着对猫咪营养的精准掌控。304 抗菌不锈钢与 1080P 超清互动的结合，让跨越时空的投喂充满仪式感。</p>
                 <p class="lang-en">In architectural forms, precision nutrition meets feline instinct. 304 antibacterial stainless and 1080P HD interaction bring ritual to every meal.</p>
-                <a href="https://shop.miaosense.shop/cart/51955127714094:1" class="btn-discover">
-                    <span class="lang-zh">立即结账 — $189</span>
-                    <span class="lang-en">Buy Now — $189</span>
+                <a href="javascript:void(0)" onclick="openWaitlist('Zenith Feeder')" class="btn-discover">
+                    <span class="lang-zh">VIP 预订 — $189</span>
+                    <span class="lang-en">Join Waitlist — $189</span>
                 </a>
                 <a href="PDP_COLLECTION.html#p2" style="margin-left: 1.5rem; font-size: 0.75rem; text-decoration: underline; color: #999; text-transform: uppercase; letter-spacing: 1px;">
                     <span class="lang-zh">设计详情</span>
@@ -446,9 +446,9 @@
                 <h3 class="lang-en">Aura | Smart Fountain</h3>
                 <p class="lang-zh">流动的艺术。针对澳洲市政硬水定制的离子过滤系统，静谧运行，确保每一滴水都纯净如墨尔本的清晨。</p>
                 <p class="lang-en">Art in motion. A custom filtration system for AU hard water, ensuring every drop is as pure as a Melbourne morning.</p>
-                <a href="https://shop.miaosense.shop/cart/51955125485870:1" class="btn-discover">
-                    <span class="lang-zh">立即结账 — $129</span>
-                    <span class="lang-en">Buy Now — $129</span>
+                <a href="javascript:void(0)" onclick="openWaitlist('Aura Fountain')" class="btn-discover">
+                    <span class="lang-zh">VIP 预订 — $129</span>
+                    <span class="lang-en">Join Waitlist — $129</span>
                 </a>
                 <a href="PDP_COLLECTION.html#p1" style="margin-left: 1.5rem; font-size: 0.75rem; text-decoration: underline; color: #999; text-transform: uppercase; letter-spacing: 1px;">
                     <span class="lang-zh">设计详情</span>
@@ -468,9 +468,9 @@
                 <h3 class="lang-en">Guardian | 4G GPS Tracker</h3>
                 <p class="lang-zh">它是猫咪在大洋洲丛林间的守护者。原生支持 Band 28 (700MHz) 澳洲电信专有频段，确保在最偏远的林地，信号依然精准可见。</p>
                 <p class="lang-en">A guardian for the Australian wilderness. Supporting Band 28 (700MHz), ensuring precise tracking even in remote terrains.</p>
-                <a href="https://shop.miaosense.shop/cart/51955139510574:1" class="btn-discover">
-                    <span class="lang-zh">立即结账 — $149</span>
-                    <span class="lang-en">Buy Now — $149</span>
+                <a href="javascript:void(0)" onclick="openWaitlist('Guardian GPS')" class="btn-discover">
+                    <span class="lang-zh">VIP 预订 — $149</span>
+                    <span class="lang-en">Join Waitlist — $149</span>
                 </a>
                 <a href="PDP_COLLECTION.html#p7" style="margin-left: 1.5rem; font-size: 0.75rem; text-decoration: underline; color: #999; text-transform: uppercase; letter-spacing: 1px;">
                     <span class="lang-zh">设计详情</span>
@@ -634,6 +634,65 @@
 
         const savedLang = localStorage.getItem('miao-lang');
         if (savedLang) setLanguage(savedLang);
+    </script>
+    <!-- Waitlist Modal -->
+    <div id="waitlistModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); z-index: 10000; align-items: center; justify-content: center;">
+        <div style="background: var(--color-bg); width: 90%; max-width: 500px; padding: 3rem; position: relative; border-radius: 2px; box-shadow: 0 50px 100px rgba(0,0,0,0.2); text-align: center;">
+            <button onclick="closeWaitlist()" style="position: absolute; top: 1.5rem; right: 1.5rem; background: none; border: none; font-size: 1.5rem; color: #999; cursor: pointer; cursor: pointer !important;">&times;</button>
+            <span style="font-size: 0.8rem; letter-spacing: 5px; color: var(--color-accent); text-transform: uppercase; display: block; margin-bottom: 1rem; font-weight: 600;">MiaoSense AU | VIP Access</span>
+            <h2 class="lang-zh" style="margin-bottom: 1rem; font-style: italic;">加入优先预订名单</h2>
+            <h2 class="lang-en" style="margin-bottom: 1rem; font-style: italic;">Join the VIP Waitlist</h2>
+            <p class="lang-zh" style="color: #666; margin-bottom: 2.5rem; font-size: 0.95rem;">MiaoSense 澳洲首发即将开启。留下您的邮箱，锁定 15% 的早鸟折扣并获得首发通知。</p>
+            <p class="lang-en" style="color: #666; margin-bottom: 2.5rem; font-size: 0.95rem;">MiaoSense AU launch is coming. Secure your 15% early-bird discount and get notified first.</p>
+            
+            <form id="waitlistForm" onsubmit="submitWaitlist(event)">
+                <input type="hidden" id="interestedProduct" name="product">
+                <input type="email" id="subscriberEmail" placeholder="Your Email Address" required style="width: 100%; padding: 1.2rem; margin-bottom: 1.5rem; border: 1px solid #ddd; background: transparent; font-family: 'Montserrat', sans-serif; font-size: 1rem; cursor: text !important;">
+                <button type="submit" style="width: 100%; border: none; padding: 1.2rem; background: var(--color-text); color: #fff; cursor: pointer !important; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; transition: 0.3s; font-family: 'Montserrat', sans-serif;">
+                    <span class="lang-zh">提交预订</span>
+                    <span class="lang-en">Request Access</span>
+                </button>
+            </form>
+            <div id="thankYouMsg" style="display: none; padding: 2rem 0;">
+                <h3 class="lang-zh" style="color: var(--color-secondary); font-style: italic;">感谢您的关注</h3>
+                <h3 class="lang-en" style="color: var(--color-secondary); font-style: italic;">Thank You</h3>
+                <p class="lang-zh" style="margin-top: 1rem;">我们已记录您的兴趣，首发时将第一时间通知您。</p>
+                <p class="lang-en" style="margin-top: 1rem;">We've recorded your interest. We'll notify you as soon as we launch.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openWaitlist(productName) {
+            document.getElementById('interestedProduct').value = productName;
+            document.getElementById('waitlistModal').style.display = 'flex';
+            document.getElementById('waitlistForm').style.display = 'block';
+            document.getElementById('thankYouMsg').style.display = 'none';
+        }
+
+        function closeWaitlist() {
+            document.getElementById('waitlistModal').style.display = 'none';
+        }
+
+        function submitWaitlist(event) {
+            event.preventDefault();
+            const email = document.getElementById('subscriberEmail').value;
+            const product = document.getElementById('interestedProduct').value;
+            
+            console.log("VIP INTEREST CAPTURED:", { email, product, timestamp: new Date().toISOString() });
+            
+            document.getElementById('waitlistForm').style.display = 'none';
+            document.getElementById('thankYouMsg').style.display = 'block';
+            
+            setTimeout(closeWaitlist, 3500);
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById('waitlistModal');
+            if (event.target == modal) {
+                closeWaitlist();
+            }
+        }
     </script>
 </body>
 </html>
